@@ -58,6 +58,7 @@ jobs:
         sudo -E timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+        sudo apt install clang
 
     - name: Clone source code
       working-directory: /workdir
@@ -256,6 +257,7 @@ jobs:
         sudo -E timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+        sudo apt install clang
 
     - name: Clone source code
       working-directory: /workdir
@@ -436,6 +438,7 @@ jobs:
         sudo -E timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+        sudo apt install clang
 
     - name: Clone source code
       working-directory: /workdir

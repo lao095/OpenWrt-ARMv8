@@ -43,7 +43,7 @@ mv -n $@ ../
 cd ..
 rm -rf $localdir
 }
-git_sparse_clone master "https://github.com/fw876/helloworld" "openwrt" luci-app-ssr-plus
+git_sparse_clone master "https://github.com/fw876/helloworld" "package/helloworld" luci-app-ssr-plus
 # git clone -b main --single-branch --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone -b main --single-branch --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
 git clone -b main --single-branch --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2

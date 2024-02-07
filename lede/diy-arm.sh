@@ -48,8 +48,8 @@ function merge_package(){
     git sparse-checkout set "$@"
     mv -f "$@" "$rootdir"/"$localdir" && cd "$rootdir"
 }
-merge_package master https://github.com/fw876/helloworld/tree/master luci-app-ssr-plus
-merge_package main https://github.com/fw876/helloworld/tree/main gn
+merge_package master https://github.com/fw876/helloworld luci-app-ssr-plus
+merge_package main https://github.com/fw876/helloworld gn
 # git clone -b main --single-branch --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone -b main --single-branch --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
 git clone -b main --single-branch --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2

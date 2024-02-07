@@ -33,22 +33,17 @@ sed -i 's#luci-theme-bootstrap#luci-theme-opentomcat#g' feeds/luci/collections/l
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
 
 # Add additional packages
-function merge_package(){
-    # 参数1是分支名,参数2是库地址。所有文件下载到openwrt/package/openwrt-packages路径。
-    # 同一个仓库下载多个文件夹直接在后面跟文件名或路径，空格分开。
-    trap 'rm -rf "$tmpdir"' EXIT
-    branch="$1" curl="$2" && shift 2
-    rootdir="$PWD"
-    localdir=package/openwrt-packages
-    [ -d "$localdir" ] || mkdir -p "$localdir"
-    tmpdir="$(mktemp -d)" || exit 1
-    git clone -b "$branch" --depth 1 --filter=blob:none --sparse "$curl" "$tmpdir"
-    cd "$tmpdir"
-    git sparse-checkout init --cone
-    git sparse-checkout set "$@"
-    mv -f "$@" "$rootdir"/"$localdir" && cd "$rootdir"
+function git_sparse_clone() {
+branch="$1" rurl="$2" localdir="$3" && shift 3
+git clone -b $branch --depth 1 --filter=blob:none --sparse $rurl $localdir
+cd $localdir
+git sparse-checkout init --cone
+git sparse-checkout set $@
+mv -n $@ ../
+cd ..
+rm -rf $localdir
 }
-merge_package master https://github.com/fw876/helloworld  luci-app-ssr-plus
+git_sparse_clone master "https://github.com/fw876/helloworld" "openwrt" luci-app-ssr-plus
 # git clone -b main --single-branch --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone -b main --single-branch --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
 git clone -b main --single-branch --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2

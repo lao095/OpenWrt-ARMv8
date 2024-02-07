@@ -49,6 +49,7 @@ function merge_package(){
     mv -f "$@" "$rootdir"/"$localdir" && cd "$rootdir"
 }
 merge_package master https://github.com/fw876/helloworld luci-app-ssr-plus
+merge_package main https://github.com/fw876/helloworld gn
 # git clone -b main --single-branch --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone -b main --single-branch --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
 git clone -b main --single-branch --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2
@@ -56,6 +57,7 @@ git clone -b main --single-branch --depth=1 https://github.com/xiaorouji/openwrt
 git clone -b master --single-branch --depth=1 https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/luci-theme-opentomcat
 # svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 git clone -b dev --single-branch --depth=1 https://github.com/vernesong/OpenClash.git package/OpenClash
+rm -rf package/openwrt-passwall-packages/gn
 # rm -rf package/helloworld/hysteria
 # rm -rf package/helloworld/v2ray-core
 # rm -rf package/helloworld/v2ray-plugin

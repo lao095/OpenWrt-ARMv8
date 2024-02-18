@@ -53,6 +53,7 @@ jobs:
         sudo -E apt -y full-upgrade
         sudo -E apt -y install $(curl -fsSL https://is.gd/depends_ubuntu_2204)
         sudo -E systemctl daemon-reload
+        sudo apt-get install clang
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa
         sudo apt-get install -y gcc-13

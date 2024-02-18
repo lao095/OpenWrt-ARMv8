@@ -53,7 +53,6 @@ jobs:
         sudo -E apt -y full-upgrade
         sudo -E apt -y install $(curl -fsSL https://is.gd/depends_ubuntu_2204)
         sudo -E systemctl daemon-reload
-        sudo apt-get install clang
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa
         sudo apt-get install -y gcc-13
@@ -169,10 +168,10 @@ jobs:
     - name: copy update files
       run: |
         cd /opt/openwrt_packit
-        # cp ./files/update*.sh ./output/
+        cp ./files/update*.sh ./output/
         rm -rf $(find ./output/ -name "sha256sums" -o -name "*.gz.sha" -o -name "*.tar.gz")
-        # cd $GITHUB_WORKSPACE/openwrt/bin
-        # cp IPK.tar.gz /opt/openwrt_packit/output/
+        cd $GITHUB_WORKSPACE/openwrt/bin
+        cp IPK.tar.gz /opt/openwrt_packit/output/
         echo "{status}={success}" >> $GITHUB_OUTPUT
 
     - name: Upload OpenWrt Firmware to Release

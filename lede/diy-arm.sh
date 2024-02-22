@@ -33,7 +33,7 @@ sed -i 's#luci-theme-bootstrap#luci-theme-opentomcat#g' feeds/luci/collections/l
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
 
 # Add additional packages
-git clone -b master --single-branch --depth=1 https://github.com/dfbucy090/helloworld.git package/helloworld
+git clone -b main --single-branch --depth=1 https://github.com/dfbucy090/helloworld.git package/helloworld
 # git clone -b master --single-branch --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone -b main --single-branch --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
 git clone -b main --single-branch --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2

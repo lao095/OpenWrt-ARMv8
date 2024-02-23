@@ -96,12 +96,12 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-#    - name: cache
-#      uses: HiGarfield/cachewrtbuild@main
-#      with:
-#        ccache: 'true'
-#        mixkey: ARMv8
-#        prefix: ${{ github.workspace }}/openwrt
+    - name: cache
+      uses: HiGarfield/cachewrtbuild@main
+      with:
+        ccache: 'true'
+        mixkey: ARMv8
+        prefix: ${{ github.workspace }}/openwrt
 
     - name: Compile the firmware
       id: compile
